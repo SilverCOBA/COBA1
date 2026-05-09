@@ -2,8 +2,8 @@ name: Sync to GitFlic
 
 on:
   push:
-    branches: [ "main" ]   # или "master", если основная ветка так называется
-  workflow_dispatch:
+    branches: [ "main", "master" ]   # учитываем оба возможных имени основной ветки
+  workflow_dispatch:                 # ручной запуск
 
 jobs:
   sync:
@@ -23,6 +23,6 @@ jobs:
         env:
           GITFLIC_TOKEN: ${{ secrets.GITFLIC_TOKEN }}
         run: |
-          GITFLIC_REPO="https://oauth2:${GITFLIC_TOKEN}@gitflic.ru/project/vocxod235/C08a.git"
+          GITFLIC_REPO="https://oauth2:${GITFLIC_TOKEN}@gitflic.ru/project/vocxod235/c08a.git"
           git remote add gitflic $GITFLIC_REPO
           git push --mirror --force gitflic
